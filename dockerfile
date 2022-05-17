@@ -8,6 +8,8 @@ RUN go mod download
 
 COPY . .
 
+RUN go test ./...
+RUN go mod verify
 RUN go build -o /dist
 
 EXPOSE 8080
