@@ -124,23 +124,6 @@ definitions:
       desc:
         type: string
     type: object
-  ongkir.Kota:
-    properties:
-      id:
-        type: integer
-      kota_nama:
-        type: string
-      postal_code:
-        type: string
-      province_id:
-        type: integer
-      provinces:
-        $ref: '#/definitions/ongkir.Provinces'
-      rajaongkir_city_id:
-        type: integer
-      tipe:
-        type: string
-    type: object
   ongkir.Ongkir:
     properties:
       asal:
@@ -159,13 +142,6 @@ definitions:
     - tipe_asal
     - tipe_tujuan
     - tujuan
-    type: object
-  ongkir.Provinces:
-    properties:
-      id:
-        type: integer
-      provinsi_nama:
-        type: string
     type: object
   ongkir.Resi:
     properties:
@@ -214,7 +190,8 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/admin.Admin'
+              additionalProperties: true
+              type: object
             type: array
       summary: Get All admin
       tags:
@@ -291,7 +268,8 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/admin.Admin'
+            additionalProperties: true
+            type: object
       summary: Get Admin By ID
       tags:
       - admin
@@ -349,7 +327,8 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/ongkir.Kota'
+              additionalProperties: true
+              type: object
             type: array
         "400":
           description: ""
@@ -372,14 +351,16 @@ paths:
         name: admin
         required: true
         schema:
-          $ref: '#/definitions/admin.Kota'
+          additionalProperties: true
+          type: object
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/admin.Kota'
+            additionalProperties: true
+            type: object
         "400":
           description: ""
       summary: Create Data City
@@ -408,7 +389,8 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/admin.Kota'
+            additionalProperties: true
+            type: object
         "400":
           description: ""
       summary: Delete Data City
@@ -442,7 +424,8 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/admin.Kota'
+            additionalProperties: true
+            type: object
         "400":
           description: ""
       summary: Update Data City
@@ -520,7 +503,8 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/admin.Kota'
+            additionalProperties: true
+            type: object
         "400":
           description: ""
       summary: Get data city by name dan tipe

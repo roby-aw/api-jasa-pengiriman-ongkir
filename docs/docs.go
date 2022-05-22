@@ -45,7 +45,8 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/admin.Admin"
+                                "type": "object",
+                                "additionalProperties": true
                             }
                         }
                     }
@@ -120,7 +121,8 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/ongkir.Kota"
+                                "type": "object",
+                                "additionalProperties": true
                             }
                         }
                     },
@@ -156,7 +158,8 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/admin.Kota"
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     }
                 ],
@@ -164,7 +167,8 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/admin.Kota"
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     },
                     "400": {
@@ -216,7 +220,8 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/admin.Kota"
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     },
                     "400": {
@@ -257,7 +262,8 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/admin.Kota"
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     },
                     "400": {
@@ -330,7 +336,8 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/admin.Admin"
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     }
                 }
@@ -501,7 +508,8 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/admin.Kota"
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     },
                     "400": {
@@ -742,32 +750,6 @@ const docTemplate = `{
                 }
             }
         },
-        "ongkir.Kota": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "kota_nama": {
-                    "type": "string"
-                },
-                "postal_code": {
-                    "type": "string"
-                },
-                "province_id": {
-                    "type": "integer"
-                },
-                "provinces": {
-                    "$ref": "#/definitions/ongkir.Provinces"
-                },
-                "rajaongkir_city_id": {
-                    "type": "integer"
-                },
-                "tipe": {
-                    "type": "string"
-                }
-            }
-        },
         "ongkir.Ongkir": {
             "type": "object",
             "required": [
@@ -791,17 +773,6 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "tujuan": {
-                    "type": "string"
-                }
-            }
-        },
-        "ongkir.Provinces": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "provinsi_nama": {
                     "type": "string"
                 }
             }
