@@ -31,7 +31,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           script: |
-            cd app
+            cd api
             git pull origin main
             go mod verify
-            docker compose down && docker compose --env-file ./config/app.env up --build -d
+            docker compose down && docker compose up
