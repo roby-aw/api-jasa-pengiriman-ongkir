@@ -35,4 +35,4 @@ jobs:
             cd api
             git pull origin main
             go mod verify
-            sudo docker compose down && docker compose up
+            sudo docker compose build && docker compose down && docker compose up
