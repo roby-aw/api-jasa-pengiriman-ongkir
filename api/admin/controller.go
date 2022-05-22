@@ -26,7 +26,7 @@ func NewController(service adminBusiness.Service) *Controller {
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Success 200 {object} []admin.Admin
+// @Success 200 {object} []map[string]interface{}
 // @Router /admin [get]
 func (Controller *Controller) GetAdmins(c echo.Context) error {
 	admins, err := Controller.service.GetAdmins()
@@ -47,7 +47,7 @@ func (Controller *Controller) GetAdmins(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Param id path int true "anything id"
-// @Success 200 {object} admin.Admin
+// @Success 200 {object} map[string]interface{}
 // @Router /admin/{id} [get]
 func (Controller *Controller) GetAdminByID(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
@@ -96,7 +96,7 @@ func (Controller *Controller) CreateAdmin(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Success 200 {object} []ongkir.Kota
+// @Success 200 {object} []map[string]interface{}
 // @Failure 400
 // @Router /admin/city [get]
 func (Controller *Controller) GetAllCity(c echo.Context) error {
@@ -195,7 +195,7 @@ func (Controller *Controller) UpdateAdmin(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Param admin body adminBusiness.Kota true "Kota"
+// @Param admin body map[string]interface{} true "Kota"
 // @Success 200 {object} map[string]interface{}
 // @Failure 400
 // @Router /admin/city [post]
@@ -220,7 +220,7 @@ func (Controller *Controller) CreateCity(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Param data body admin.GetCityById true "Kota"
-// @Success 200 {object} adminBusiness.Kota
+// @Success 200 {object} map[string]interface{}
 // @Failure 400
 // @Router /city [post]
 func (Controller *Controller) GetCityByName(c echo.Context) error {
@@ -246,7 +246,7 @@ func (Controller *Controller) GetCityByName(c echo.Context) error {
 // @Param id path int true "id city"
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Param admin body adminBusiness.Kota true "Kota"
-// @Success 200 {object} adminBusiness.Kota
+// @Success 200 {object} map[string]interface{}
 // @Failure 400
 // @Router /admin/city/{id} [put]
 func (Controller *Controller) UpdateCity(c echo.Context) error {
@@ -272,7 +272,7 @@ func (Controller *Controller) UpdateCity(c echo.Context) error {
 // @Produce json
 // @Param id path int true "id city"
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Success 200 {object} adminBusiness.Kota
+// @Success 200 {object} map[string]interface{}
 // @Failure 400
 // @Router /admin/city/{id} [delete]
 func (Controller *Controller) RemoveCity(c echo.Context) error {
