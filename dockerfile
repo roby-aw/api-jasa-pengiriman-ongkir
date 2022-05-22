@@ -8,7 +8,7 @@ RUN go mod download
 RUN go mod verify
 
 COPY . .
-
+RUN go mod tidy
 RUN go test ./...
 RUN go build -o /dist
 
