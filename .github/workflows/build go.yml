@@ -32,8 +32,8 @@ jobs:
           key: ${{ secrets.KEY }}
           script: |
             cd api
-            swag init
             sudo docker compose down
+            swag init
             sudo docker system prune -f
             git pull origin main
             go mod verify
