@@ -196,7 +196,7 @@ func (Controller *Controller) UpdateAdmin(c echo.Context) error {
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Param admin body adminBusiness.Kota true "Kota"
-// @Success 200 {object} adminBusiness.Kota
+// @Success 200 {object} map[string]interface{}
 // @Failure 400
 // @Router /admin/city [post]
 func (Controller *Controller) CreateCity(c echo.Context) error {
