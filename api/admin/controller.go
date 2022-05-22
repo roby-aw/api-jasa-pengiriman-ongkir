@@ -29,11 +29,15 @@ func NewController(service adminBusiness.Service) *Controller {
 // @Success 200 {object} []admin.Admin
 // @Router /admin [get]
 func (Controller *Controller) GetAdmins(c echo.Context) error {
-	users, err := Controller.service.GetAdmins()
+	admins, err := Controller.service.GetAdmins()
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
-	return c.JSON(http.StatusOK, users)
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success get all admin",
+		"data":     admins,
+	})
 }
 
 // Create godoc
@@ -51,7 +55,11 @@ func (Controller *Controller) GetAdminByID(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
-	return c.JSON(http.StatusOK, admin)
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success get data admin",
+		"data":     admin,
+	})
 }
 
 // Create godoc
@@ -74,7 +82,11 @@ func (Controller *Controller) CreateAdmin(c echo.Context) error {
 			"Error":   err.Error(),
 		})
 	}
-	return c.JSON(http.StatusOK, admins)
+	return c.JSON(http.StatusCreated, map[string]interface{}{
+		"code":     201,
+		"messages": "success create data",
+		"data":     admins,
+	})
 }
 
 // Create godoc
@@ -88,11 +100,15 @@ func (Controller *Controller) CreateAdmin(c echo.Context) error {
 // @Failure 400
 // @Router /admin/city [get]
 func (Controller *Controller) GetAllCity(c echo.Context) error {
-	users, err := Controller.service.GetAllCity()
+	citys, err := Controller.service.GetAllCity()
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
-	return c.JSON(http.StatusOK, users)
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success get all city",
+		"data":     citys,
+	})
 }
 
 // Create godoc
@@ -115,7 +131,8 @@ func (Controller *Controller) GetToken(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success",
+		"code":    200,
+		"message": "success login",
 		"token":   token,
 	})
 }
@@ -137,8 +154,10 @@ func (Controller *Controller) DeleteAdmin(c echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
-	return c.JSON(http.StatusOK, map[string]string{
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
 		"messages": "success delete admin",
+		"data id ": id,
 	})
 }
 
@@ -163,7 +182,8 @@ func (Controller *Controller) UpdateAdmin(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"messages": "success",
+		"code":     200,
+		"messages": "success update data admin",
 		"data":     admin,
 	})
 }
@@ -186,7 +206,8 @@ func (Controller *Controller) CreateCity(c echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
-	return c.JSON(http.StatusOK, map[string]interface{}{
+	return c.JSON(http.StatusCreated, map[string]interface{}{
+		"code":     201,
 		"messages": "success",
 		"data":     kota,
 	})
@@ -209,7 +230,11 @@ func (Controller *Controller) GetCityByName(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
-	return c.JSON(http.StatusOK, kota)
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success get city",
+		"data":     kota,
+	})
 }
 
 // Create godoc
@@ -233,7 +258,8 @@ func (Controller *Controller) UpdateCity(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"messages": "success",
+		"code":     200,
+		"messages": "success update city",
 		"data":     datakota,
 	})
 }
@@ -256,6 +282,7 @@ func (Controller *Controller) RemoveCity(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
 		"messages": "success deleted kota",
 		"data":     kota,
 	})
